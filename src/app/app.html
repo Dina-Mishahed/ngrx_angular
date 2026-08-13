@@ -1,0 +1,43 @@
+<app-navbar (toggleCart)="toggleCart()"></app-navbar>
+
+<main class="main-container">
+  <!-- Educational Header Banner -->
+  <div class="hero-banner">
+    <div class="hero-badge">🎓 Angular + NgRx 19 Step-by-Step Architecture</div>
+    <h2>تطبيق إحترافي متكامل لإدارة الحالة (State Management)</h2>
+    <p>
+      شاهد كيف تنتقل البيانات بسلاسة بين الـ <strong>Actions</strong> و الـ <strong>Reducers</strong> و الـ <strong>Effects</strong> و الـ <strong>Selectors</strong>.
+    </p>
+
+    <!-- Quick Concept Badges -->
+    <div class="concept-chips">
+      <div class="chip">
+        <span class="dot purple"></span>
+        <span>Actions (الأحداث)</span>
+      </div>
+      <div class="chip">
+        <span class="dot blue"></span>
+        <span>Effects (HTTP API)</span>
+      </div>
+      <div class="chip">
+        <span class="dot green"></span>
+        <span>Reducers (Pure Logic)</span>
+      </div>
+      <div class="chip">
+        <span class="dot yellow"></span>
+        <span>Selectors (Signals View)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Catalog Grid -->
+  <app-product-list></app-product-list>
+
+  <!-- Live NgRx Action Stream Inspector -->
+  <app-action-inspector></app-action-inspector>
+</main>
+
+<!-- Cart Side Drawer -->
+@if (isCartOpen) {
+  <app-cart-drawer (closeCart)="toggleCart()"></app-cart-drawer>
+}

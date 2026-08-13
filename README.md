@@ -1,60 +1,40 @@
-# NgrxDemo
+# ⚡ Angular + NgRx Store Demo Application (`ngrx_angular`)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+تطبيق متكامل وتفاعلي لبناء وفهم **NgRx State Management** بأسلوب عملي محترف باستخدام **Angular Standalone Components**, **NgRx Signals**, **Actions**, **Reducers**, **Effects**, و **Selectors**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🌟 المميزات (Features)
 
-```bash
-ng serve
-```
+- 🛒 **إدارة سلة التسوق (Shopping Cart Store)**: إضافة، تعديل الكميات، وحذف العناصر مع حساب الإجمالي لحظياً.
+- 🔍 **البحث والتصفية (Search & Filtering)**: تصفية المنتجات حسب الفئة مع البحث في الاسم والوصف.
+- ⚡ **Live Action Inspector**: شاشة تفاعلية مدمجة تُظهر تدفق الـ Actions التي تمر على الـ Store في الوقت الفعلي.
+- 🌐 **NgRx Effects Simulation**: محاكاة طلبات الـ HTTP API مع التأخير الشبكي والتعامل مع حالات النجاح والفشل.
+- 🎨 **تصميم زجاجي عصري (Modern Dark Glassmorphism)**: واجهة مستخدم سريعة وسلسة ومتجاوبة.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🏗️ البنية المعمارية لـ NgRx (Architecture)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **`Actions`**: [products.actions.ts](src/app/state/products.actions.ts) - تعريف الأحداث باستخدام `createActionGroup`.
+- **`Reducer`**: [products.reducer.ts](src/app/state/products.reducer.ts) - التعامل مع تغيرات الـ State بدوال نقية (Pure Functions).
+- **`Effects`**: [products.effects.ts](src/app/state/products.effects.ts) - جلب البيانات والتعامل مع الـ Async Operations.
+- **`Selectors`**: [products.selectors.ts](src/app/state/products.selectors.ts) - قراءة واستقطاع الحالات واستخدام `store.selectSignal`.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 تشغيل المشروع محلياً (Run Locally)
 
-```bash
-ng generate --help
-```
+1. **تثبيت الحزم (Install Dependencies)**:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-## Building
+2. **تشغيل سيرفر التطوير (Start Dev Server)**:
+   ```bash
+   ng serve
+   # أو
+   npm start
+   ```
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# ngrx_angular
+3. افتح المتصفح على: `http://localhost:4200`
