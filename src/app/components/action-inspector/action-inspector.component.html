@@ -1,0 +1,29 @@
+<div class="inspector-card">
+  <div class="inspector-header">
+    <div class="header-title">
+      <span class="live-dot"></span>
+      <h3>🕹️ NgRx Live Action Inspector</h3>
+    </div>
+    <span class="subtext">سجل الأكشن المتدفقة مباشرةً في الـ Store</span>
+  </div>
+
+  <div class="logs-container">
+    @if (logs().length === 0) {
+      <div class="empty-logs">
+        <p>لا توجد الأكشنز حتى الآن...</p>
+      </div>
+    } @else {
+      <div class="logs-list">
+        @for (log of logs(); track log.id) {
+          <div class="log-item" [class.api-action]="log.actionType.includes('API')" [class.cart-action]="log.actionType.includes('Cart')">
+            <span class="log-time">{{ log.timestamp }}</span>
+            <span class="log-type">{{ log.actionType }}</span>
+            @if (log.payload) {
+              <span class="log-payload">{{ log.payload | json }}</span>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

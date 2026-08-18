@@ -1,0 +1,70 @@
+<section class="products-section">
+  <!-- Search and Filter Bar -->
+  <div class="controls-card">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="ابحث عن جهاز، سماعات، أو ملحقات..." [(ngModel)]="searchQuery"
+        (ngModelChange)="onSearchChange($event)" />
+    </div>
+
+    <div class="categories-bar">
+      @for (cat of categories; track cat) {
+      <button class="cat-chip" [class.active]="selectedCategory() === cat" (click)="onSelectCategory(cat)">
+        {{ cat === 'ALL' ? 'الكل' : cat }}
+      </button>
+      }
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  @if (loading()) {
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p>جاري تحميل المنتجات عبر NgRx Effects...</p>
+  </div>
+  }
+
+  <!-- Error State -->
+  @if (error()) {
+  <div class="error-container">
+    <p>⚠️ حدث خطأ: {{ error() }}</p>
+    <button (click)="retryLoad()">إعادة المحاولة</button>
+  </div>
+  }
+
+  <!-- Product Cards Grid -->
+  @if (!loading() && !error()) {
+  <div class="products-grid">
+    @for (product of products(); track product.id) {
+    <div class="product-card">
+      <div class="card-image-wrapper">
+        <img [src]="product.image" alt="product.name" [title]="product.name" />
+        <span class="category-badge">{{ product.category }}</span>
+      </div>
+
+      <div class="card-content">
+        <div class="card-header">
+          <h3>{{ product.name }}</h3>
+          <span class="rating">⭐ {{ product.rating }}</span>
+        </div>
+
+        <p class="description">{{ product.description }}</p>
+
+        <div class="card-footer">
+          <span class="price">${{ product.price }}</span>
+          <button class="add-btn" (click)="addToCart(product)">
+            <span>+ أضف للسلة</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  @if (products().length === 0) {
+  <div class="no-results">
+    <p>لم يتم العثور على منتجات مطابقة لـ "{{ searchQuery }}"</p>
+  </div>
+  }
+  }
+</section>
